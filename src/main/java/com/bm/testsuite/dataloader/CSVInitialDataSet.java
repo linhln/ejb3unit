@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -762,7 +764,7 @@ public class CSVInitialDataSet<T> implements InitialDataSet {
 	 */
 	private void setPreparedStatementSimple(int index, PreparedStatement statement,
 			Property fieldProp, String value) throws SQLException, IOException {
-                Class<?> type = Ejb3Utils.getNonPrimitiveType(fieldProp.getType());
+        Class<?> type = Ejb3Utils.getNonPrimitiveType(fieldProp.getType());
 
         if (type.isArray()) {
 			if (value == null || value.equals("") || value.equals("null")) {
@@ -773,7 +775,7 @@ public class CSVInitialDataSet<T> implements InitialDataSet {
                 statement.setObject(index, contents);
             }
         } else if (type.equals(String.class)) {
-                statement.setString(index, value);
+            statement.setString(index, value);
 		} else if (type.equals(Integer.class)) {
 			if (value == null || value.equals("") || value.equals("null")) {
 				statement.setNull(index, Types.INTEGER);
@@ -790,14 +792,14 @@ public class CSVInitialDataSet<T> implements InitialDataSet {
 			}
 		} else if (type.equals(Boolean.class)) {
             boolean result;
-                        // try to parse as int
-                        try {
-                            result = BooleanUtils.toBoolean(Integer.valueOf(value));
-                        } catch (NumberFormatException ex) {
-                            // not an int, continue trying a literal name
-                            result = BooleanUtils.toBoolean(value);
-                        }
-            
+	        // try to parse as int
+	        try {
+	            result = BooleanUtils.toBoolean(Integer.valueOf(value));
+	        } catch (NumberFormatException ex) {
+	            // not an int, continue trying a literal name
+	            result = BooleanUtils.toBoolean(value);
+	        }
+
 			statement.setBoolean(index, result);
 		} else if (type.equals(Short.class)) {
 			statement.setShort(index, ((value.equals("")) ? 0 : Short
@@ -806,7 +808,7 @@ public class CSVInitialDataSet<T> implements InitialDataSet {
 			statement.setByte(index, Byte.valueOf(value));
 		} else if (type.equals(Character.class)) {
 			statement.setString(index, String.valueOf(value));
-		} else if (type.equals(Date.class)) {
+		} else if (type.equals(Date.class) || type.equals(Timestamp.class) || type.equals(Time.class)) {
 			parseAndSetDate(index, value, statement);
 		} else if (type.equals(Double.class)) {
 			statement.setDouble(index, ((value.equals("")) ? 0 : Double
@@ -815,32 +817,32 @@ public class CSVInitialDataSet<T> implements InitialDataSet {
 			statement.setFloat(index, ((value.equals("")) ? 0 : Float
 					.valueOf(value)));
 		} else if (type.isEnum()) {
-                        // try to parse as int
-                        try {
-			statement.setInt(index, Integer.valueOf(value));
-                        } catch (NumberFormatException ex) {
-                            // not an int, continue trying a literal name
-                        }
-                    
-                        // try to parse literal name
-                        try {
-                            Class enumClass = type.getClassLoader().
-                                    loadClass(type.getCanonicalName());
-                            Enum someEnum = Enum.valueOf(enumClass,value);
+	        // try to parse as int
+	        try {
+	        	statement.setInt(index, Integer.valueOf(value));
+	        } catch (NumberFormatException ex) {
+	            // not an int, continue trying a literal name
+	        }
 
-                            // insert as ordinal or string
-                            if (isEnumeratedOrdinal(fieldProp)) {
-                                // Enumerated.ORDINAL
-                                statement.setObject(index, someEnum.ordinal());
-                            } else {
-                                // Enumerated.STRING
-                                statement.setObject(index, someEnum.name());
-                            }
-                            
-                        } catch (Exception ex) {
-                            log.error("Can't load enum value for constant: " +  value + ": ", ex);
-                            throw new RuntimeException(ex);
-                        }
+            // try to parse literal name
+            try {
+                Class enumClass = type.getClassLoader().
+                        loadClass(type.getCanonicalName());
+                Enum someEnum = Enum.valueOf(enumClass,value);
+
+                // insert as ordinal or string
+                if (isEnumeratedOrdinal(fieldProp)) {
+                    // Enumerated.ORDINAL
+                    statement.setObject(index, someEnum.ordinal());
+                } else {
+                    // Enumerated.STRING
+                    statement.setObject(index, someEnum.name());
+                }
+                
+            } catch (Exception ex) {
+                log.error("Can't load enum value for constant: " +  value + ": ", ex);
+                throw new RuntimeException(ex);
+            }
 		}
 	}
         
@@ -856,7 +858,6 @@ public class CSVInitialDataSet<T> implements InitialDataSet {
             // default is EnumType.ORDINAL
             return true;
         }
-
 
 	private void parseAndSetDate(int index, String value,
 			PreparedStatement statement) throws SQLException {
