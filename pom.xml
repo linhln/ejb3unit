@@ -7,6 +7,12 @@
 	<version>2.1.0-SNAPSHOT</version>
 	<description>Out of Container Testing of EJB 3.0</description>
 	<url>http://ejb3unit.sourceforge.net/</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+		
 	<ciManagement>
 		<system>continuum</system>
 		<notifiers>
@@ -166,6 +172,27 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.1.0</version>
+				<configuration>
+					<repoToken>UA9aZy9LgYpvketFk42gYm2bY8njQtqCl</repoToken>
+				</configuration>
+			</plugin>
+			<plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.7.6.201602180812</version>
+			<executions>
+				<execution>
+					<id>prepare-agent</id>
+					<goals>
+						<goal>prepare-agent</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
 		</plugins>
 	</build>
 	<repositories>
