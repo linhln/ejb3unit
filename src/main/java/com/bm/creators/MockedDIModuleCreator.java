@@ -16,7 +16,8 @@ import com.bm.testsuite.mocked.MockProvider;
 
 public class MockedDIModuleCreator implements Module {
 
-       private final MockProvider mockProvider;
+    private final MockProvider mockProvider;
+
 	private Map<Class<?>, Object> interfacesMockControls = new HashMap<Class<?>, Object>();
 
 	private final Map<String, String> interface2implemantation;

@@ -101,8 +101,8 @@ public class JMethod {
         this.name = m.getName();
         this.descriptor = Type.getMethodDescriptor(m);
         // FIXME: make this ok
-        // this.signature = Type.signature;
-        // this.exceptions = exceptions;
+         this.signature = m.getReturnType().getName();
+//         this.exceptions = m.getExceptionTypes();
     }
 
     /**

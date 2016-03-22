@@ -1,13 +1,14 @@
 package com.bm.inject;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.Arrays;
 
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.persistence.PersistenceContext;
 
-import junit.framework.TestCase;
-
+import org.junit.Test;
 
 import com.bm.creators.BeanCreationListener;
 import com.bm.creators.MockedDIModuleCreator;
@@ -25,9 +26,8 @@ import com.bm.testsuite.mocked.JMockProvider;
  * @author Daniel Wiese
  * 
  */
-public class DependencyInjectorTest extends TestCase {
+public class DependencyInjectorTest {
 
-    //private final Mockery context = new Mockery();
     @SuppressWarnings("unchecked")
     private AnnotatedFieldsSessionBean createBeanIstance(Module module) {
 
@@ -43,6 +43,7 @@ public class DependencyInjectorTest extends TestCase {
     /**
      * Test method.
      */
+    @Test
     public void testInjector_injectMockObjects() {
         JMockProvider provider = new JMockProvider();
         MockedDIModuleCreator module = MetaDataCache.getMockModuleCreator(AnnotatedFieldsSessionBean.class, provider);
