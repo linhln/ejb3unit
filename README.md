@@ -2,6 +2,7 @@
 * The Ejb3Unit project automates Entity and Session bean testing outside the container for the EJB 3.0 specification.
 [![Dependency Status](https://www.versioneye.com/user/projects/56ef94f935630e003e0a7d6c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56ef94f935630e003e0a7d6c/) 
 [![Build Status](https://travis-ci.org/linhln/ejb3unit.svg)](https://travis-ci.org/linhln/ejb3unit)
+[![Coverage Status](https://coveralls.io/repos/github/linhln/ejb3unit/badge.svg?branch=master)](https://coveralls.io/github/linhln/ejb3unit?branch=master)
 
 # What are the features of ejb3unit?
 
