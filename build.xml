@@ -6,14 +6,13 @@
 		<jarjar destfile="${project.build.directory}/${project.build.finalName}.jar">
 			<manifest>
 				<attribute name="Manifest-Version" value="1.0" />
-				<attribute name="Ejb3Unit" value="Versin 2.0 by Daniel Wiese and Fabian Bauschulte" />
+				<attribute name="Ejb3Unit" value="Version 2.0 by Daniel Wiese and Fabian Bauschulte" />
 				<attribute name="Can-Redefine-Classes" value="true" />
 			</manifest>
 			<zipfileset src="${project.build.directory}/liblocation/antlr.jar" />
-			<zipfileset src="${project.build.directory}/liblocation/avalon-framework.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/commons-beanutils.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/commons-collections.jar" />
-			<zipfileset src="${project.build.directory}/liblocation/commons-lang.jar" />
+			<zipfileset src="${project.build.directory}/liblocation/commons-lang3.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/commons-logging.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/dom4j.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/ejb3guice.jar" />
@@ -23,18 +22,17 @@
 			<zipfileset src="${project.build.directory}/liblocation/hibernate-commons-annotations.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/hibernate-core.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/hibernate-entitymanager.jar" />
-			<zipfileset src="${project.build.directory}/liblocation/hibernate-jpa-2.0-api.jar" />
+			<zipfileset src="${project.build.directory}/liblocation/hibernate-jpa-2.1-api.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/h2.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/javassist.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/jta.jar" />
-			<zipfileset src="${project.build.directory}/liblocation/logkit.jar" />
-			<zipfileset src="${project.build.directory}/liblocation/servlet-api.jar" />
+			<zipfileset src="${project.build.directory}/liblocation/avalon-logkit.jar" />
+			<zipfileset src="${project.build.directory}/liblocation/javax.servlet-api.jar" />
 			<zipfileset src="${project.build.directory}/liblocation/slf4j-api.jar" />
 
 			<zipfileset src="${project.build.directory}/${project.build.finalName}.tmp" />
 			<rule pattern="org.hibernate.**" result="org.ejb3unit.hibernate.@1" />
 			<rule pattern="org.apache.commons.**" result="org.ejb3unit.apache.commons.@1" />
-			<rule pattern="org.apache.avalon.**" result="org.ejb3unit.apache.avalon.@1" />
 			<rule pattern="org.apache.log.**" result="org.ejb3unit.apache.log.@1" />
 			<rule pattern="org.dom4j.**" result="org.ejb3unit.dom4j.@1" />
 			<!-- <rule pattern="org.h2.**" result="org.ejb3unit.h2.@1" /> -->
