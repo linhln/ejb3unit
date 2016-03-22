@@ -21,7 +21,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  */
 @Entity
 @Table(name = "news")
-@NamedQuery(name = "NewsBo.allNews", query = "select * from com.bm.ejb3data.bo.NewsBo")
+@NamedQuery(name = "NewsBo.allNews", query = "from com.bm.ejb3data.bo.NewsBo")
 public class NewsBo implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;

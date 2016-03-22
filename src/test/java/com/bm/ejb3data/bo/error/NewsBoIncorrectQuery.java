@@ -12,8 +12,6 @@ import javax.persistence.Transient;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import com.bm.ejb3data.bo.NewsId;
-
 /**
  * Test entity bean with annotated fields. Represents market related news object.
  * 
@@ -22,7 +20,7 @@ import com.bm.ejb3data.bo.NewsId;
  */
 @Entity
 @Table(name = "newsIncorrectQuery")
-@NamedQuery(name = "NewsBoIncorrectQuery.incorrect", query = "select * from com.ejb3unit.NewsBoIncorrectQuery")
+@NamedQuery(name = "NewsBoIncorrectQuery.incorrect", query = "from com.ejb3unit.NewsBoIncorrectQuery")
 public class NewsBoIncorrectQuery implements Serializable {
     @Transient
     private static final long serialVersionUID = 1L;

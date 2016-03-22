@@ -1,4 +1,4 @@
-package com.bm.ejb3data.bo;
+package com.bm.ejb3data.bo.error;
 
 import java.io.Serializable;
 

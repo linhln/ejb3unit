@@ -21,7 +21,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  */
 @Entity
 @Table(name = "stocks")
-@NamedQuery(name = "StockWKNBo.allStocks", query = "select * from com.bm.ejb3data.bo.StockWKNBo order by wkn")
+@NamedQuery(name = "StockWKNBo.allStocks", query = "from com.bm.ejb3data.bo.StockWKNBo order by wkn")
 public class StockWKNBo implements Comparable, Serializable {
     private static final long serialVersionUID = 1L;
 
