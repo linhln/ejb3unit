@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-
-import org.hibernate.ejb.Ejb3Configuration;
+import org.hibernate.cfg.Configuration;
 
 import com.bm.PersistenceXml;
 import com.bm.cfg.Ejb3UnitCfg;
@@ -21,11 +22,12 @@ import com.bm.testsuite.EntityInitializationException;
 public class EntityManagerProvider implements Provider<EntityManager> {
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory
 			.getLogger(EntityManagerProvider.class);
-	private final Set<Class<?>> entitiesToTest;
+	private final List<Class<?>> entitiesToTest;
 	private final Set<String> entitiesToTestClassNames;
 	private final Ejb3UnitCfg configuration;
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager em;
+	private static final String PERSISTENT_UNIT_DEFAULT = "default-persistent-unit";
 
 	public EntityManagerProvider() {
 		this((Collection<Class<?>>) null);
@@ -36,7 +38,7 @@ public class EntityManagerProvider implements Provider<EntityManager> {
 	}
 
 	public EntityManagerProvider(Collection<Class<?>> entyties) {
-		entitiesToTest = new HashSet<Class<?>>();
+		entitiesToTest = new ArrayList<Class<?>>();
 		entitiesToTestClassNames = new HashSet<String>();
 		if (entyties != null) {
 			registerEntities(entyties);
@@ -171,21 +173,22 @@ public class EntityManagerProvider implements Provider<EntityManager> {
 	}
 
 	private void createEmFactory() {
-		Ejb3Configuration cfg = configuration.getEJB3Configuration();
+		Configuration cfg = configuration.getEJB3Configuration();
 
-		for (Class<?> entityToTest : this.entitiesToTest) {
-			cfg.addAnnotatedClass(entityToTest);
-		}
+		cfg.getProperties().put(org.hibernate.jpa.AvailableSettings.LOADED_CLASSES, entitiesToTest);
+//		for (Class<?> entityToTest : this.entitiesToTest) {
+//			cfg.addAnnotatedClass(entityToTest);
+//		}
 
 		if (em != null && em.isOpen()) {
 			try {
 				em.close();
 			} catch (Exception e) {
-				// intetionally left blank
+				// intentionally left blank
 			}
 		}
 		this.em = null;
-		this.entityManagerFactory = cfg.createEntityManagerFactory();
+		entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENT_UNIT_DEFAULT, cfg.getProperties());
 	}
 
 	/**

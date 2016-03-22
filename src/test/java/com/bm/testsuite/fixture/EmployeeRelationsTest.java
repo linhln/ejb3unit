@@ -97,10 +97,10 @@ public class EmployeeRelationsTest extends TestCase {
 		departmentData.create();
 		employeeData1.create();
 		Employee e1 = entityManager.find(Employee.class, 1);
-		assertEquals("daniel", e1.name);
-		Department dept = e1.department1;
+		assertEquals("daniel", e1.getName());
+		Department dept = e1.getDepartment1();
 		assertNotNull(dept);
-		assertEquals("IT", dept.name);
+		assertEquals("IT", dept.getName());
 	}
 
 	/**

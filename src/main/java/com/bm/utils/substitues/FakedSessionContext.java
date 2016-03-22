@@ -16,7 +16,7 @@ import javax.naming.NamingException;
 import javax.transaction.UserTransaction;
 import javax.xml.rpc.handler.MessageContext;
 
-import org.apache.commons.lang.NotImplementedException;
+import org.apache.commons.lang3.NotImplementedException;
 
 import com.bm.jndi.MemoryContextFactory;
 

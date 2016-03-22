@@ -3,15 +3,16 @@ package com.bm.ejb3data.bo.error;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import com.bm.ejb3data.bo.NewsId;
 
 /**
  * Test entity bean with annotated fields. Represents market related news object.
@@ -21,7 +22,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  */
 @Entity
 @Table(name = "newsIncorrectQuery")
-@NamedQuery(name = "NewsBoIncorrectQuery.incorrect", query = "from com.ejb3unit.NewsBoIncorrectQuery")
+@NamedQuery(name = "NewsBoIncorrectQuery.incorrect", query = "select * from com.ejb3unit.NewsBoIncorrectQuery")
 public class NewsBoIncorrectQuery implements Serializable {
     @Transient
     private static final long serialVersionUID = 1L;
@@ -129,7 +130,7 @@ public class NewsBoIncorrectQuery implements Serializable {
      * @return Returns the datumInMillis.
      */
     public Long getDatumInMillis() {
-        return this.primaryKey.datumInMillis;
+        return this.primaryKey.getDatumInMillis();
     }
 
     /**
@@ -139,7 +140,7 @@ public class NewsBoIncorrectQuery implements Serializable {
      *            The datumInMillis to set.
      */
     public void setDatumInMillis(java.lang.Long datumInMillis) {
-        this.primaryKey.datumInMillis = datumInMillis;
+        this.primaryKey.setDatumInMillis(datumInMillis);
     }
 
     /**
@@ -205,7 +206,7 @@ public class NewsBoIncorrectQuery implements Serializable {
      * @return Returns the ueberschrift.
      */
     public java.lang.String getUeberschrift() {
-        return this.primaryKey.ueberschrift;
+        return this.primaryKey.getUeberschrift();
     }
 
     /**
@@ -215,7 +216,7 @@ public class NewsBoIncorrectQuery implements Serializable {
      *            The ueberschrift to set.
      */
     public void setUeberschrift(java.lang.String ueberschrift) {
-        this.primaryKey.ueberschrift = ueberschrift;
+        this.primaryKey.setUeberschrift(ueberschrift);
     }
 
     /**
@@ -224,7 +225,7 @@ public class NewsBoIncorrectQuery implements Serializable {
      * @return Returns the wkn.
      */
     public int getWkn() {
-        return this.primaryKey.wkn;
+        return this.primaryKey.getWkn();
     }
 
     /**
@@ -234,123 +235,7 @@ public class NewsBoIncorrectQuery implements Serializable {
      *            The wkn to set.
      */
     public void setWkn(int wkn) {
-        this.primaryKey.wkn = wkn;
-    }
-
-    /**
-     * The PK Class from News - wird benutzt, da es sich um einen zusammengesetzten Key handelt.
-     * 
-     * @author Daniel
-     * 
-     */
-    @Embeddable
-    public static class NewsId implements Serializable {
-
-        private static final long serialVersionUID = 1L;
-
-        /**
-         * PK Comonent 1: Uberschrift der Meldung.
-         */
-        @Column(name = "ueberschrift", nullable = false, length = 250)
-        private String ueberschrift;
-
-        /**
-         * PK Comonent 2: WKN der Meldung.
-         */
-        @Column(name = "wkn", nullable = false)
-        private int wkn;
-
-        /**
-         * PK Comonent 3: Datum der Meldung.
-         */
-        @Column(name = "datum", nullable = false)
-        private long datumInMillis;
-
-        /**
-         * Returns the datumInMillis.
-         * 
-         * @return Returns the datumInMillis.
-         */
-        public long getDatumInMillis() {
-            return this.datumInMillis;
-        }
-
-        /**
-         * Sets the datumInMillis.
-         * 
-         * @param datumInMillis
-         *            The datumInMillis to set.
-         */
-        public void setDatumInMillis(long datumInMillis) {
-            this.datumInMillis = datumInMillis;
-        }
-
-        /**
-         * Returns the ueberschrift.
-         * 
-         * @return Returns the ueberschrift.
-         */
-        public String getUeberschrift() {
-            return this.ueberschrift;
-        }
-
-        /**
-         * Sets the ueberschrift.
-         * 
-         * @param ueberschrift
-         *            The ueberschrift to set.
-         */
-        public void setUeberschrift(String ueberschrift) {
-            this.ueberschrift = ueberschrift;
-        }
-
-        /**
-         * Returns the wkn.
-         * 
-         * @return Returns the wkn.
-         */
-        public int getWkn() {
-            return this.wkn;
-        }
-
-        /**
-         * Sets the wkn.
-         * 
-         * @param wkn
-         *            The wkn to set.
-         */
-        public void setWkn(int wkn) {
-            this.wkn = wkn;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean equals(Object other) {
-            if (other != null && other instanceof NewsId) {
-                final NewsId otherC = (NewsId) other;
-                final EqualsBuilder eq = new EqualsBuilder();
-                eq.append(otherC.datumInMillis, this.datumInMillis);
-                eq.append(otherC.ueberschrift, this.ueberschrift);
-                eq.append(otherC.wkn, this.wkn);
-                return eq.isEquals();
-            }
-            return false;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public int hashCode() {
-            final HashCodeBuilder hb = new HashCodeBuilder(17, 21);
-            hb.append(ueberschrift);
-            hb.append(wkn);
-            hb.append(datumInMillis);
-            return hb.toHashCode();
-        }
-
+        this.primaryKey.setWkn(wkn);
     }
 
 }

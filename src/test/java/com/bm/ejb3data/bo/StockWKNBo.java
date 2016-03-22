@@ -11,8 +11,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Test entity bean with annotated fields. Represents a stock like ADIDAS.
@@ -21,7 +21,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  */
 @Entity
 @Table(name = "stocks")
-@NamedQuery(name = "StockWKNBo.allStocks", query = "from com.bm.ejb3data.bo.StockWKNBo order by wkn")
+@NamedQuery(name = "StockWKNBo.allStocks", query = "select * from com.bm.ejb3data.bo.StockWKNBo order by wkn")
 public class StockWKNBo implements Comparable, Serializable {
     private static final long serialVersionUID = 1L;
 

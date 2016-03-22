@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bm</groupId>
 	<artifactId>ejb3unit</artifactId>
@@ -50,17 +51,17 @@
 			<organization>Private</organization>
 			<timezone />
 		</contributor>
-        <contributor>
+		<contributor>
 			<name>Paul Sowden</name>
 			<email>psowden(at)gmail.com</email>
 			<organization>Mimecast</organization>
 			<timezone />
 		</contributor>
 		<contributor>
-		  <name>Alphonse Bendt</name>
-		  <email>alphonse.bendt(at)akquinet.de</email>
-		  <organization>Akquinet AG</organization>
-        </contributor>
+			<name>Alphonse Bendt</name>
+			<email>alphonse.bendt(at)akquinet.de</email>
+			<organization>Akquinet AG</organization>
+		</contributor>
 	</contributors>
 	<licenses>
 		<license>
@@ -112,7 +113,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-<version>2.4.2</version>
+				<version>2.4.2</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -201,38 +202,38 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.4</version>
+			<version>4.12</version>
 			<scope>compile</scope>
 		</dependency>
-		<!-- logging and mock are THE ONLY DEPENDENCIES-->
-               <dependency>
-	                <groupId>org.slf4j</groupId>
-                	<artifactId>slf4j-api</artifactId>
-        	        <version>1.5.2</version>
-	                <type>jar</type>
-                	<scope>compile</scope>
-                </dependency>
+		<!-- logging and mock are THE ONLY DEPENDENCIES -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.19</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
 		<!-- for mock testing -->
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-junit4</artifactId>
-			<version>2.2.0</version>
+			<version>2.8.2</version>
 		</dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.7</version>
-        </dependency>
-        <dependency>
-  <groupId>org.easymock</groupId>
-  <artifactId>easymock</artifactId>
-  <version>2.4</version>
-</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>3.4</version>
+		</dependency>
 		<!-- commons dependencies -->
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.7.0</version>
+			<version>1.9.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -242,10 +243,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.3</version>
-			<scope>provided</scope>
+			<groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+            <scope>provided</scope>
 		</dependency>
 		<!-- for guice -->
 		<dependency>
@@ -257,44 +258,35 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.6.0.Final</version>
+			<version>5.1.0.Final</version>
 			<scope>provided</scope>
-<!--
-                        <exclusions>
-                           <exclusion>
-                               <groupId>commons-logging</groupId>
-                               <artifactId>commons-logging</artifactId>
-                           </exclusion>
-                       </exclusions>
--->
 		</dependency>
-                <dependency>
-                        <groupId>cglib</groupId>
-                        <artifactId>cglib-nodep</artifactId>
-                        <version>2.1_3</version>
-                        <scope>provided</scope>
-                        <optional>true</optional>
-                </dependency>
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <version>1.5.2</version>
-                    <type>jar</type>
-                    <scope>test</scope>
-                </dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>3.2.1</version>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.19</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
 		<!-- for in momory database -->
-                <dependency>
-		    <groupId>com.h2database</groupId>
-		    <artifactId>h2</artifactId>
-		    <version>1.1.102</version>
-                    <scope>provided</scope>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.191</version>
+			<scope>provided</scope>
 		</dependency>
-		      <dependency>
-                	<groupId>javax.mail</groupId>
-                	<artifactId>mail</artifactId>
-                	<version>1.4.1</version>
-                	<type>jar</type>
-                </dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+		</dependency>
 	</dependencies>
 	<reporting>
 		<plugins>

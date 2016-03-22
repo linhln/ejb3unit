@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -143,6 +145,10 @@ public class BasicDataSource implements DataSource {
 	 */
 	public <T> T unwrap(Class<T> arg0) throws SQLException {
 		return null;
+	}
+
+	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+		return Logger.getGlobal();
 	}
 
 }

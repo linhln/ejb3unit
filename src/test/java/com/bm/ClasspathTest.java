@@ -1,15 +1,19 @@
 package com.bm;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.io.IOException;
 import java.net.URL;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class ClasspathTest extends TestCase {
+public class ClasspathTest {
 
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory
 			.getLogger(ClasspathTest.class);
 
+	@Test
 	public void testSearchStringString() {
 		try {
 			URL[] url = Classpath.search("META-INF", "persistence.xml");

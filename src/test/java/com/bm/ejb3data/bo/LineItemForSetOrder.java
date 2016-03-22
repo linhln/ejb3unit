@@ -7,8 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Test entity bean with method annotations Represents a line item of an order.
@@ -30,6 +30,7 @@ public class LineItemForSetOrder implements java.io.Serializable {
 	@Column(name = "QUANTITY")
 	private int quantity;
 
+	@Column(length=255)
 	private String product;
 
 	@ManyToOne(cascade = CascadeType.ALL)

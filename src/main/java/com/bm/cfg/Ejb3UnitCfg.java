@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Arrays;
 
-import org.hibernate.cache.NoCacheProvider;
+import org.hibernate.cache.internal.NoCachingRegionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.H2Dialect;
-import org.hibernate.ejb.Ejb3Configuration;
-import org.hibernate.transaction.JDBCTransactionFactory;
 import org.h2.Driver;
 
 /**
@@ -140,8 +139,8 @@ public final class Ejb3UnitCfg {
      *
      * @return hibernate entity manager Ejb3Configuration
      */
-    public Ejb3Configuration getEJB3Configuration() {
-        Ejb3Configuration cfg = new Ejb3Configuration();
+    public Configuration getEJB3Configuration() {
+    	Configuration cfg = new Configuration();
         // tranform the ejb3unit configuration to the hibernate
         // configuration
         final Properties prop = cfg.getProperties();
@@ -172,15 +171,15 @@ public final class Ejb3UnitCfg {
             this.setProperty(prop, "hibernate.hbm2ddl.auto", this.config
                     .getProperty(KEY_AUTOMATIC_SCHEMA_UPDATE));
         }
-        this.setProperty(prop, "hibernate.cache.provider_class", NoCacheProvider.class
+        this.setProperty(prop, "hibernate.cache.provider_class", NoCachingRegionFactory.class
                 .getName());
         this.setProperty(prop, "hibernate.show_sql", this.config
                 .getProperty(KEY_SHOW_SQL));
         this.setProperty(prop, "hibernate.cache.use_second_level_cache", "false");
         this.setProperty(prop, "hibernate.cache.use_query_cache", "false");
         // static properties
-        this.setProperty(prop, "hibernate.transaction.factory_class",
-                JDBCTransactionFactory.class.getName());
+//        this.setProperty(prop, "hibernate.transaction.factory_class",
+//                JDBCTransactionFactory.class.getName());
         return cfg;
     }
 
@@ -191,14 +190,14 @@ public final class Ejb3UnitCfg {
      * @return the ddl
      */
     public String getSchemaGenScript(DBDialect dialect) {
-        String[] generateSchemaCreationScript = this.getEJB3Configuration()
-                .getHibernateConfiguration().generateSchemaCreationScript(
-                        dialect.getDialect());
+//        String[] generateSchemaCreationScript = this.getEJB3Configuration()
+//                .getHibernateConfiguration().generateSchemaCreationScript(
+//                        dialect.getDialect());
         final StringBuilder sb = new StringBuilder();
-        for (String ddl : generateSchemaCreationScript) {
-            sb.append(ddl).append("\n");
-        }
-        System.out.println(sb.toString());
+//        for (String ddl : generateSchemaCreationScript) {
+//            sb.append(ddl).append("\n");
+//        }
+//        System.out.println(sb.toString());
         return sb.toString();
     }
 

@@ -28,7 +28,7 @@ import java.util.Set;
  * @author Fabian Bauschulte
  * 
  */
-public class BaseFixture extends BaseTest {
+public class BaseFixture extends BaseTest{
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.
             getLogger(BaseFixture.class);
@@ -47,11 +47,15 @@ public class BaseFixture extends BaseTest {
         this(null);
 
     }
+
     @Ejb3UnitInternalInject
     private Ejb3UnitJndiBinder jndiBinder;
+
     @Ejb3UnitInternalInject
     private Provider<EntityManager> entityManagerProv;
+
     private Injector injector;
+
     private final InitialDataSet[] initalDataSet;
     /**
      * If an exception during construction occurs, it is stored here to fail the

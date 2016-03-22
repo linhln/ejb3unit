@@ -20,8 +20,9 @@ public class Employee implements Serializable {
 	@GeneratedValue
 	private int empId;
 
-	public String name;
-	public String fullname;
+	private String name;
+
+	private String fullname;
 
 	// @JoinTable(name="empdept", joinColumns=@JoinColumn(name="empid",
 	// nullable=true), inverseJoinColumns=@JoinColumn(name="deptid",
@@ -29,17 +30,17 @@ public class Employee implements Serializable {
 
 	// The most simple, straight-forward (bi-directional) many-to-one relation
 	@ManyToOne
-	public Department department1;
+	private Department department1;
 
 	// Same as before, now with a simple join-column annotation
 	@ManyToOne()
 	@JoinColumn(name = "dept2")
-	public Department department2;
+	private Department department2;
 
 	// Same as before, now with the annotations in reversed order
 	@JoinColumn(name = "dept3")
 	@ManyToOne()
-	public Department department3;
+	private Department department3;
 
 	// The most simple, straight-forward (unidirectional) many-to-one relation
 	@ManyToOne

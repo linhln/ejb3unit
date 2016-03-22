@@ -21,7 +21,7 @@ public class Department implements Serializable {
 	@GeneratedValue
 	private int deptId;
 
-	public String name;
+	private String name;
 
 	@OneToMany(mappedBy = "department1")
 	private List<Employee> employees1;

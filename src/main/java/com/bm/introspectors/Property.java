@@ -9,8 +9,8 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 
 import com.bm.ejb3metadata.annotations.metadata.FieldAnnotationMetadata;
@@ -137,30 +137,30 @@ public class Property {
 					PropertyUtils.setProperty(instance, this.propertyName,
 							value);
 				} catch (InvocationTargetException e) {
-					log.error("Can´t set the value (" + value
+					log.error("Canï¿½t set the value (" + value
 							+ ") in property: " + this.propertyName);
 					throw new IllegalAccessException(
-							"Can´t invoke the setter method set"
+							"Canï¿½t invoke the setter method set"
 									+ this.propertyName);
 				} catch (NoSuchMethodException e) {
-					log.error("Can´t set the value (" + value
+					log.error("Canï¿½t set the value (" + value
 							+ ") in property: " + this.propertyName);
 					throw new IllegalAccessException(
-							"Can´t invoke the setter method set"
+							"Canï¿½t invoke the setter method set"
 									+ this.propertyName);
 				} catch (IllegalArgumentException e) {
-					log.error("Can´t set the value (" + value
+					log.error("Canï¿½t set the value (" + value
 							+ ") in property: " + this.propertyName);
 					throw e;
 				}
 			}
 		} catch (IllegalAccessException ex) {
-			log.error("Can´t set the value (" + value + ") in property: "
+			log.error("Canï¿½t set the value (" + value + ") in property: "
 					+ this.propertyName, ex);
 			throw ex;
 		} catch (RuntimeException ruex) {
 
-			log.error("Can´t set the value (" + value + ") in property: "
+			log.error("Canï¿½t set the value (" + value + ") in property: "
 					+ this.propertyName, ruex);
 			throw ruex;
 
@@ -194,11 +194,11 @@ public class Property {
 				back = PropertyUtils.getProperty(instance, this.propertyName);
 			} catch (InvocationTargetException e) {
 				throw new IllegalAccessException(
-						"Can´t invoke the getter method get"
+						"Canï¿½t invoke the getter method get"
 								+ this.propertyName);
 			} catch (NoSuchMethodException e) {
 				throw new IllegalAccessException(
-						"Can´t invoke the getter method get"
+						"Canï¿½t invoke the getter method get"
 								+ this.propertyName);
 			}
 		}

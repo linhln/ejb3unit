@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Test entity bean with method annotations Represents a line item of an order.
@@ -28,6 +28,7 @@ public class LineItem implements java.io.Serializable {
 
 	private int quantity;
 
+	@Column(length=1000)
 	private String product;
 
 	private Order order;

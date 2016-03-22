@@ -14,7 +14,6 @@ import com.bm.cfg.Ejb3UnitCfg;
 import com.bm.ejb3guice.inject.Binder;
 import com.bm.ejb3guice.inject.Module;
 import com.bm.utils.BasicDataSource;
-import com.bm.utils.substitues.FakedSessionContext;
 import com.bm.utils.substitues.MailSessionProvider;
 import com.bm.utils.substitues.MockedTimerService;
 

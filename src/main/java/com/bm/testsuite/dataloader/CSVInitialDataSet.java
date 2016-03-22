@@ -23,7 +23,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
 
 import javax.persistence.Query;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 import com.bm.cfg.Ejb3UnitCfg;
 import com.bm.introspectors.DbMappingInfo;
