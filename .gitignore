@@ -38,3 +38,7 @@ Thumbs.db
 
 #build folder
 target/
+/bin/
+/.settings/
+/.classpath
+/.project

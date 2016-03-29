@@ -8,6 +8,8 @@ import javax.ejb.EJB;
 import javax.persistence.PersistenceContext;
 
 import org.jmock.Mockery;
+import org.junit.After;
+import org.junit.Before;
 
 import com.bm.creators.BeanCreationListener;
 import com.bm.creators.MockedDIModuleCreator;
@@ -75,7 +77,7 @@ public abstract class MockedSessionBeanFixture<T> extends BaseTest implements IM
     /**
      * {@inheritDoc}
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
         super.setUp();
         mockProvider = MockProviderFactory.createMockProvider();
@@ -102,7 +104,7 @@ public abstract class MockedSessionBeanFixture<T> extends BaseTest implements IM
     /**
      * {@inheritDoc}
      */
-    @Override
+    @After
     public void tearDown() throws Exception {
         mockProvider.verifyMocks();
         super.tearDown();

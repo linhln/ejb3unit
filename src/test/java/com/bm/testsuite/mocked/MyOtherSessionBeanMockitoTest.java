@@ -14,8 +14,7 @@ import static org.mockito.Mockito.atLeastOnce;
  * @author Paul Sowden
  * @version Aug 7, 2009 10:28:09 AM
  */
-public class MyOtherSessionBeanMockitoTest  extends
-		MockedSessionBeanFixture<AnnotatedFieldsSessionBean> {
+public class MyOtherSessionBeanMockitoTest extends MockedSessionBeanFixture<AnnotatedFieldsSessionBean> {
 
     private String mockingProvider;
 
